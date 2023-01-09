@@ -4,16 +4,24 @@
 //
 //  Created by ธนัท แสงเพิ่ม on 27/12/2565 BE.
 //
+//  Credit >> https://stackoverflow.com/questions/58207755/black-screen-after-adding-scenedelegate-and-updating-info-plist/58208876#58208876
 
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if #available(iOS 13.0, *) {
+            // In iOS 13 setup is done in SceneDelegate
+        } else {
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            self.window = window
+            window.rootViewController = ViewController()
+        }
         return true
     }
 
